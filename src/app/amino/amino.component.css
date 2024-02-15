@@ -1,0 +1,92 @@
+
+.product-info {
+    display: flex;
+    align-items: center;
+    background-color: #e5f9e0; /* Set background color */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    margin-bottom: 20px; /* Add margin bottom for spacing between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.product-info img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.product-info .opis {
+    list-style-type: disc;
+    padding: 0;
+    margin: 0;
+}
+
+.product-info .opis li {
+    margin-bottom: 20px;
+}
+
+.produkti {
+    height: 100%;
+}
+
+.proteini {
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    font-size: larger;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.proteini .produkti {
+    padding: 20px;
+}
+
+.proteini .produkti .product-info h3,
+.proteini .produkti .product-info p {
+    color: black; /* Change text color to black */
+}
+
+.cart {
+    background-color: #e5f9e0; /* Set background color */
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 150px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+}
+
+.details {
+    flex: 1;
+}
+
+.subtotal {
+    margin-left: 20px;
+}
+
+.total-price {
+    font-weight: bold;
+    text-align: right;
+}
+

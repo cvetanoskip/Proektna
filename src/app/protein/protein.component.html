@@ -1,0 +1,72 @@
+
+  <div class="proteini" [ngStyle]="{ 'background-image': 'url(\'./assets/Icons/supplements.jpg\')' }">
+    <div id="najava" class="najava">          
+      <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+      <div id="najavise" class="najavatext">Најави се</div>
+      <br>
+      <div id="ime1" class="ime1">Корисничко име</div>
+      <input type="text" id="username">
+      <div id="namewarning" class="warning">Не може корисничкото име да содржи празни места</div>
+      <br>
+      <br>
+      <div id="lozinka" class="lozinka">Лозинка</div>
+      <input type="password" id="password">
+      <div id="passwarning" class="warning1">Лозинката треба да содржи минимум 8 карактери, 1 голема, 1 мала буква и цифра</div>
+      <br>
+      <button id="login" class="login">Најави се</button>
+    </div>
+    <div class="produkti">
+      <div *ngFor="let product of produkti">
+        <div *ngIf="product.category === 'Protein'">
+          <h3>{{ product.name }}</h3>
+          <p>Price: ${{ product.price }}</p>
+          <div class="product-info">
+            <img [src]="getProductImage(product.name)" [alt]="product.name">
+            <ul class="opis">
+              <ng-container *ngIf="product.name === 'Dymatize Protein'">
+                <li>25 гр whey протеин со премиум квалитет</li>
+                <li>Секое сервирње содржи 6,0–6,2 гр BCAAs*</li>
+                <li>Низок процент на шекер</li>
+                <li>Без глутен</li>
+                <li>Без банирани супстанции тестирано од “Informed-Sport” for athletes’ гаранција за продукт со највисок квалитет</li>
+              </ng-container>
+              <ng-container *ngIf="product.name === 'Scitec Protein'">
+                <li>100% Whey Protein Professional</li>
+                <li>Протеински пијалак со вкус во прав, со протеини од сурутка, аминокиселини, ензими и засладувачи</li>
+              </ng-container>
+              <ng-container *ngIf="product.name === 'Biotech Protein'">
+                <li>Gluten free</li>
+                <li>Low sugar content</li>
+                <li>Palm oil free</li>
+                <li>Free of preservatives</li>
+                <li>Unflavored drink powder from whey protein concentrate, without food additives.</li>
+              </ng-container>
+            </ul>
+            <button (click)="addToCart(product)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cart" *ngIf="cartItems.length > 0">
+        <h2>Кошничка</h2>
+        <div *ngFor="let item of cartItems" class="cart-item">
+          <div class="item-info">
+            <img [src]="item.image" alt="{{ item.name }}">
+            <div class="details">
+              <p>{{ item.name }}</p>
+              <p>Цена: ${{ item.price }} секој</p>
+              <p>Количина: {{ item.quantity }}</p>
+            </div>
+          </div>
+          <div class="subtotal">
+            <p>Меѓузбир: ${{ item.price * item.quantity }}</p>
+          </div>
+        </div>
+        <p class="total-price">Вкупна Цена: ${{ getTotalPrice() }}</p>
+        <button class="checkout-btn">Плати</button>
+      </div>
+      
+      
+      
+  </div>
+  

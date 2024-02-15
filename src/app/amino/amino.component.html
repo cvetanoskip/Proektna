@@ -1,0 +1,74 @@
+<div class="proteini" [ngStyle]="{ 'background-image': 'url(\'./assets/Icons/supplements.jpg\')' }">
+    <div id="najava" class="najava">          
+        <a href="javascript:void(0)" class="closebtn" id="closebtn">&times;</a>
+        <div id="najavise" class="najavatext">Најави се</div>
+        <br>
+        <div id="ime1" class="ime1">Корисничко име</div>
+        <input type="text" id="username">
+        <div id="namewarning" class="warning">Не може корисничкото име да содржи празни места</div>
+        <br>
+        <br>
+        <div id="lozinka" class="lozinka">Лозинка</div>
+        <input type="password" id="password">
+        <div id="passwarning" class="warning1">Лозинката треба да содржи минимум 8 карактери, 1 голема, 1 мала буква и цифра</div>
+        <br>
+        <button id="login" class="login">Најави се</button>
+    </div>
+    <div class="produkti">
+        <div *ngFor="let product of produkti">
+            <div *ngIf="product.category === 'Amino-acids'">
+                <h3>{{ product.name }}</h3>
+                <p>Price: ${{ product.price }}</p>
+                <div class="product-info">
+                    <img [src]="product.image" [alt]="product.name">
+                    <ul class="description">
+                        <ng-container *ngIf="product.name === 'Biotech Amino-acids'">
+                            <li>Biotech Amino-acids description</li>
+                            <ul style="list-style-type: disc;" class="opis"><li>Gluten free</li>
+                                <li>GMO free</li>
+                                <li>Lactose free</li>
+                                <li>Liquid amino – lemon flavoured Food supplement Concentrate with amino Acids, vitamin b6 and b12, Sugar and sweeteners.</li>
+                                </ul>
+                        </ng-container>
+                        <ng-container *ngIf="product.name === 'Dymatize Amino-acids'">
+                            <li>Dymatize Amino-acids description</li>
+                            <ul style="list-style-type: disc;" class="opis"><li>1 сервирање обезбедува со 5 гр BCAAs* L-Leucine, L-Isoleucine and L-Valine</li>
+                                <li>Ги испорачува трите есенцијални аминокиселини во 2:1:1 формула</li>
+                                <li>Без глутен и без лактоза</li>
+                                <li>Без банирани супстанции тестирано од “Informed-Sport” for athletes’ гаранција за продукт со највисок квалитет</li>
+                            </ul>
+                        </ng-container>
+                        <ng-container *ngIf="product.name === 'Scitec Amino-acids'">
+                            <li>Scitec Amino-acids description</li>
+                            <ul style="list-style-type: disc;" class="opis"><li>Sugar-free*</li>
+                                <li>Gluten-free**</li>
+                                <li>Lactose-free***</li>
+                                <li>Contains a 2:1:1 ratio of Branched-Chain Amino Acids</li>
+                                <li>5g of pure BCAA per serving</li>
+                            </ul>
+                        </ng-container>
+                    </ul>
+                    <button (click)="addToCart(product)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart" *ngIf="cartItems.length > 0">
+        <h2>Кошничка</h2>
+        <div *ngFor="let item of cartItems" class="cart-item">
+            <div class="item-info">
+                <img [src]="item.image" [alt]="item.name">
+                <div class="details">
+                    <p>{{ item.name }}</p>
+                    <p>Цена: ${{ item.price }} секој</p>
+                    <p>Количина: {{ item.quantity }}</p>
+                </div>
+            </div>
+            <div class="subtotal">
+                <p>Меѓузбир: ${{ item.price * item.quantity }}</p>
+            </div>
+        </div>
+        <p class="total-price">Вкупна Цена: ${{ getTotalPrice() }}</p>
+        <button class="checkout-btn">Плати</button>
+    </div>
+</div>
